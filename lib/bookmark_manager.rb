@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require_relative 'database_setup'
 
 class BookmarkManager < Sinatra::Base
   set :views, Proc.new { File.join(root,"..", "views")}
