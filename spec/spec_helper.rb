@@ -1,6 +1,10 @@
 ENV['RACK_ENV'] = 'test'
 require 'server'
+require 'bookmark_manager'
 require 'database_cleaner'
+require 'capybara/rspec'
+
+Capybara.app = BookmarkManager
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|

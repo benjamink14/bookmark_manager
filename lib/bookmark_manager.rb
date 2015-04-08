@@ -1,8 +1,19 @@
 require 'sinatra/base'
 
 class BookmarkManager < Sinatra::Base
+  set :views, Proc.new { File.join(root,"..", "views")}
+
+
   get '/' do
-    'Hello BookmarkManager!'
+    @links = Link.all
+    erb :index
+  end
+
+  post '/links' do
+    url = params['url']
+    title = params['title']
+    Link.create(url: url, title: title)
+    redirect to('/')
   end
 
   # start the server if ruby file executed directly
